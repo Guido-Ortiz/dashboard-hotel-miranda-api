@@ -25,8 +25,8 @@ exports.bookings_list = async (req, res, next) => {
 exports.booking_detail = (req, res) => {
     const { id } = req.params
     try {
-        const detail = bookingsMockData.filter(e => e.id === id)
-        console.log(detail)
+        let detail = bookingsMockData.filter(e => e.id === id)
+        // console.log(detail)
     } catch(e) {
         console.log(e)
     }
