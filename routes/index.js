@@ -7,8 +7,6 @@ const rooms = require('./rooms')
 const users = require('./users')
 const contacts = require('./contacts')
 
-// const booking = require('./booking')
-
 // CONFIGURO LOS ROUTERS
 router.use('/bookings', bookings)
 router.use('/rooms', rooms)

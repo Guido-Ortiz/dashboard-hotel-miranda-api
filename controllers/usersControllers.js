@@ -1,9 +1,8 @@
-const axios = require('axios');
+const usersMockData = require('../public/usersMockData.json');
 
 exports.users_list = async (req, res, next) => {
     try {
-        const response = await axios.get('http://localhost:3000/usersMockData.json')
-        const usersApi = response.data.map(e => {
+        const usersApi = usersMockData.map(e => {
             return {
                 id: e.id,
                 name: e.name,

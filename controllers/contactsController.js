@@ -1,9 +1,8 @@
-const axios = require('axios');
+const contactsMockData = require('../public/contactsMockData.json')
 
 exports.contacts_list = async (req, res, next) => {
     try {
-        const response = await axios.get('http://localhost:3000/contactsMockData.json')
-        const contactsApi = response.data.map(e => {
+        const contactsApi = contactsMockData.map(e => {
             return{
                     id: e.id,
                     date: e.date,

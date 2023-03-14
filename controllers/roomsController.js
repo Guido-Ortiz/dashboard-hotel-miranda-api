@@ -1,9 +1,8 @@
-const axios = require('axios');
+const roomsMockData = require('../public/roomsMockData.json');
 
 exports.rooms_list = async (req, res, next) => {
     try {
-        const response = await axios.get('http://localhost:3000/roomsMockData.json')
-        const roomsApi = response.data.map(e => {
+        const roomsApi = roomsMockData.map(e => {
             return{
                     id: e.id,
                     number: e.number,
