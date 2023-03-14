@@ -1,19 +1,9 @@
-const { Router } = require("express");
-const { deleteBooking } = require("../controllers/deleteBooking");
-const { getBookings } = require("../controllers/getBookings");
+var express = require('express');
+var router = express.Router();
+const booking_controller = require('../controllers/bookingsControllers')
 
-const router = Router();
-
-router.get('/', getBookings)
-router.delete('/:id', deleteBooking)
+// BOOKING ROUTES
+router.get('/', booking_controller.bookings_list)
+router.get("/:id", booking_controller.booking_detail)
 
 module.exports = router;
-
-// router.get('/', async (req, res) => {
-
-//     try {
-//         console.log('HOLA')
-//     } catch (e) {
-//         console.log(e)
-//     }
-// })

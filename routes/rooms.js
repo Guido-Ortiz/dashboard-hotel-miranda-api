@@ -1,9 +1,9 @@
-const { Router } = require("express");
-const { getRooms } = require("../controllers/getRooms");
+var express = require('express');
+var router = express.Router();
+const room_controller = require('../controllers/roomsController')
 
-const router = Router();
-
-router.get('/', getRooms)
-
+// ROOMS ROUTES
+router.get('/', room_controller.rooms_list)
+router.get("/:id", room_controller.room_detail)
 
 module.exports = router;
