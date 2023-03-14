@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "date": "Feb 17 2023 10:32 AM",
+        "customer": "Jane Doe",
+        "email": "janedoe@gmail",
+        "telephone": "12345678",
+        "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa aut iusto rerum quia molestiae? Commodi mollitia, eligendi laborum autem nihil dicta deserunt laudantium totam recusandae, placeat fugit ratione aspernatur quasi!",
+        "archived": false
+    },
+    {
+        "id": 2,
+        "date": "Feb 16 2023 10:32 AM",
+        "customer": "Guido Ortiz",
+        "email": "janedoe@gmail",
+        "telephone": "12345678",
+        "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa aut iusto rerum quia molestiae? Commodi mollitia, eligendi laborum autem nihil dicta deserunt laudantium totam recusandae, placeat fugit ratione aspernatur quasi!",
+        "archived": false
+    },
+    {
+        "id": 3,
+        "date": "Feb 14 2023 10:32 AM",
+        "customer": "Javier Fernandez",
+        "email": "janedoe@gmail",
+        "telephone": "12345678",
+        "comment": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa aut iusto rerum quia molestiae? Commodi mollitia, eligendi laborum autem nihil dicta deserunt laudantium totam recusandae, placeat fugit ratione aspernatur quasi!",
+        "archived": false
+    }
+]

@@ -1,8 +1,13 @@
-// const axios = require("axios");
 const { Router } = require("express");
+const { deleteBooking } = require("../controllers/deleteBooking");
 const { getBookings } = require("../controllers/getBookings");
 
 const router = Router();
+
+router.get('/', getBookings)
+router.delete('/:id', deleteBooking)
+
+module.exports = router;
 
 // router.get('/', async (req, res) => {
 
@@ -12,6 +17,3 @@ const router = Router();
 //         console.log(e)
 //     }
 // })
-router.get('/', getBookings)
-
-module.exports = router;
