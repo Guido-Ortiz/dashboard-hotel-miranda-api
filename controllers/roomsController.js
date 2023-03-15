@@ -2,27 +2,21 @@ const roomsMockData = require('../public/roomsMockData.json');
 
 exports.rooms_list = async (req, res, next) => {
     try {
-        const roomsApi = roomsMockData.map(e => {
-            return {
-                id: e.id,
-                number: e.number,
-                photo: e.photos,
-                type: e.type,
-                amenities: e.amenities.map(e => e),
-                price: e.price,
-                offer: e.offer,
-                status: e.status
-            }
-        })
-        res.json({ succes: true, rooms: roomsApi })
-
+        res.json({ succes: true, rooms: roomsMockData })
     } catch (e) {
         console.log(e)
     }
 }
 
 exports.room_detail = (req, res) => {
-    res.send(`NOT IMPLEMENTED: room detail: ${req.params.id}`);
+    const { id } = req.params
+    try {
+        let detail = roomsMockData.filter(e => e.id == id)
+        //console.log(detail)
+        res.json(detail);
+    } catch(e) {
+        console.log(e)
+    }
 };
 
 exports.room_post = (req, res, next) => {
