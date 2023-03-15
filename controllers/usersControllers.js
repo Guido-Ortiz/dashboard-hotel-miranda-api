@@ -24,3 +24,11 @@ exports.users_list = async (req, res, next) => {
 exports.user_detail = (req, res) => {
     res.send(`NOT IMPLEMENTED: USER detail: ${req.params.id}`);
 };
+
+exports.user_post = (req, res, next) => {
+    res.send('User added succesfully!')
+}
+
+exports.user_delete = (req, res, next) => {
+    res.send(`User ${req.params.id} deleted succesfully`)
+}
