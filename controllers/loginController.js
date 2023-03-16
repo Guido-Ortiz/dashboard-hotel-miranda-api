@@ -1,5 +1,6 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+require('dotenv').config()
 
 exports.login_post = async (req, res, next) => {
     passport.authenticate('login', async (err, user, info) => {
@@ -14,9 +15,9 @@ exports.login_post = async (req, res, next) => {
                 if (error) return next(error);
 
                 const body = { _id: user._id, email: user.email };
-                const token = jwt.sign({ user: body }, 'TOP_SECRET');
+                const token = jwt.sign({ user: body }, process.env.SECRET_KEY);
 
-                return res.json({ token });
+                return res.json({ token, user });
 
             }
             );
@@ -25,8 +26,4 @@ exports.login_post = async (req, res, next) => {
         }
     }
     )(req, res, next);
-}
-
-exports.login_get = (req, res) => {
-    res.send('Holaaaaaaa')
 }

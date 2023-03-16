@@ -1,12 +1,7 @@
-// const passport = require('passport');
-// const localStrategy = require('passport-local').Strategy;
-
-// const JWTstrategy = require('passport-jwt').Strategy;
-// const ExtractJWT = require('passport-jwt').ExtractJwt;
-
 const passport = require('passport');
 const passportLocal = require('passport-local');
 const passportJwt = require('passport-jwt');
+require('dotenv').config()
 
 const localStrategy = passportLocal.Strategy;
 const JWTStrategy = passportJwt.Strategy;
@@ -28,7 +23,7 @@ passport.use(
     async (email, password, done) => {
       const user = admin
       try {
-        if (email === 'admin@hotelmiranda.com' && password === '12345') {
+        if (email === admin.email && password === admin.password) {
           return done(null, user, { message: 'Logged in succesfully' });
         } else {
           return done(null, false, { message: 'Wrong credentials' });
@@ -51,14 +46,14 @@ passport.use(
 passport.use(
   new JWTStrategy(
     {
-      secretOrKey: 'TOP_SECRET',
+      secretOrKey: process.env.SECRET_KEY,
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     },
     (token, done) => {
       try {
         return done(null, token.user);
-      } catch (error) {
-        done(error);
+      } catch (e) {
+        done(e);
       }
     }
   )
