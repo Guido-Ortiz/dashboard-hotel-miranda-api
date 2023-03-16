@@ -6,9 +6,10 @@ exports.login_post = async (req, res, next) => {
     passport.authenticate('login', async (err, user, info) => {
         try {
             if (err || !user) {
-                const error = new Error('An error occurred.');
+                // const error = new Error('An error occurred.');
 
-                return next(error);
+                // return next(error);
+                return res.json('Wrong credentials')
             }
 
             req.login(user, { session: false }, async (error) => {
