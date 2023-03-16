@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-// const passport = require('passport')
 const passport = require('passport');
 const sessionPassport = passport.authenticate('jwt', { session: false })
 
@@ -12,12 +11,11 @@ const contacts = require('./contacts')
 const login = require('./login');
 
 // CONFIGURO LOS ROUTERS
-// router.use('/bookings', bookings)
 router.use('/login', login)
 router.use('/bookings', sessionPassport, bookings)
-router.use('/rooms', rooms)
-router.use('/users', users)
-router.use('/contacts', contacts)
+router.use('/rooms', sessionPassport , rooms)
+router.use('/users', sessionPassport , users)
+router.use('/contacts', sessionPassport , contacts)
 
 
 module.exports = router;

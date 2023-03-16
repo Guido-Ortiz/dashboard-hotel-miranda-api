@@ -12,9 +12,8 @@ exports.room_detail = (req, res) => {
     const { id } = req.params
     try {
         let detail = roomsMockData.filter(e => e.id == id)
-        //console.log(detail)
         res.json(detail);
-    } catch(e) {
+    } catch (e) {
         console.log(e)
     }
 };

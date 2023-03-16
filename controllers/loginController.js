@@ -5,7 +5,7 @@ require('dotenv').config()
 exports.login_post = async (req, res, next) => {
     passport.authenticate('login', async (err, user, info) => {
         try {
-            if (!user || err) {
+            if (err || !user) {
                 const error = new Error('An error occurred.');
 
                 return next(error);
