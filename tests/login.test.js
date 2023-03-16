@@ -16,7 +16,7 @@ describe('Succesfull login', () => {
 })
 
 describe('Unsuccesfull login', () => {
-    it('should display ', async () => {
+    it('should display wrong credentials', async () => {
         const res = await request(app)
             .post('/login')
             .send({

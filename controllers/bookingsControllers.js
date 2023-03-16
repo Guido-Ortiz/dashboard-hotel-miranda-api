@@ -25,3 +25,8 @@ exports.booking_post = (req, res, next) => {
 exports.booking_delete = (req, res, next) => {
     res.send(`Booking ${req.params.id} deleted succesfully`)
 }
+
+exports.booking_edit = (req, res, next) => {
+    const edit = bookingsMockData.filter(e => e.id == req.params.id)
+    res.json(edit)
+}

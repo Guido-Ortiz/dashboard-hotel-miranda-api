@@ -7,5 +7,6 @@ router.get('/', booking_controller.bookings_list)
 router.get("/:id", booking_controller.booking_detail)
 router.post('/', booking_controller.booking_post)
 router.delete('/:id', booking_controller.booking_delete)
+router.put('/:id', booking_controller.booking_edit)
 
 module.exports = router;
