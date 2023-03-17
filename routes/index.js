@@ -8,9 +8,11 @@ const bookings = require('./bookings')
 const rooms = require('./rooms')
 const users = require('./users')
 const contacts = require('./contacts')
-const login = require('./login');
+const login = require('./login')
+const public = require('./public')
 
 // CONFIGURO LOS ROUTERS
+router.use('/', public)
 router.use('/login', login)
 router.use('/bookings', sessionPassport, bookings)
 router.use('/rooms', sessionPassport , rooms)

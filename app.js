@@ -9,11 +9,9 @@ var session = require('express-session');
 const passport = require('passport');
 const PassportLocal = require('passport-local').Strategy
 
-// import("./middleware/auth.js");
 require('./middleware/auth.js')
 
 var indexRouter = require('./routes/index');
-// var loginRouter = require('./routes/login');
 
 var app = express();
 

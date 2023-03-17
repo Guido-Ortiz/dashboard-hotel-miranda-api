@@ -19,11 +19,11 @@ exports.booking_detail = (req, res) => {
 };
 
 exports.booking_post = (req, res, next) => {
-    res.send('Booking added succesfully!')
+    res.json('Booking added succesfully!')
 }
 
 exports.booking_delete = (req, res, next) => {
-    res.send(`Booking ${req.params.id} deleted succesfully`)
+    res.json(`Booking ${req.params.id} deleted succesfully`)
 }
 
 exports.booking_edit = (req, res, next) => {
