@@ -8,13 +8,10 @@ let token;
 beforeAll((done) => {
   request(app)
     .post('/login')
-    .send({
-      email: 'admin@hotelmiranda.com',
-      password: '12345'
-    })
+    .send({ email: 'admin@hotelmiranda.com', password: '12345' })
     .end((err, res) => {
-      token = res.body.token;
-      done();
+      token = res.body.token
+      done()
     });
 });
 

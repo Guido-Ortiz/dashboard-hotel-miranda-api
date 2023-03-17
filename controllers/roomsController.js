@@ -19,9 +19,9 @@ exports.room_detail = (req, res) => {
 };
 
 exports.room_post = (req, res, next) => {
-    res.send('Room added succesfully!')
+    res.json('Room added succesfully!')
 }
 
 exports.room_delete = (req, res, next) => {
-    res.send(`Room N°${req.params.id} deleted succesfully`)
+    res.json(`Room N°${req.params.id} deleted succesfully`)
 }

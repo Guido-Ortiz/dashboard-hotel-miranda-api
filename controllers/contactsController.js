@@ -19,9 +19,9 @@ exports.contact_detail = (req, res) => {
 };
 
 exports.contact_post = (req, res, next) => {
-    res.send('Contact added succesfully!')
+    res.json('Contact added succesfully!')
 }
 
 exports.contact_delete = (req, res, next) => {
-    res.send(`Contact ${req.params.id} deleted succesfully`)
+    res.json(`Contact ${req.params.id} deleted succesfully`)
 }

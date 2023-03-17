@@ -19,9 +19,9 @@ exports.user_detail = (req, res) => {
 };
 
 exports.user_post = (req, res, next) => {
-    res.send('User added succesfully!')
+    res.json('User added succesfully!')
 }
 
 exports.user_delete = (req, res, next) => {
-    res.send(`User ${req.params.id} deleted succesfully`)
+    res.json(`User ${req.params.id} deleted succesfully`)
 }
