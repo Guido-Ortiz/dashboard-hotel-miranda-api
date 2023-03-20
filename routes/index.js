@@ -3,6 +3,9 @@ var router = express.Router();
 const passport = require('passport');
 const sessionPassport = passport.authenticate('jwt', { session: false })
 
+var database = require('../database')
+
+
 // IMPORTO LOS ROUTERS
 const bookings = require('./bookings')
 const rooms = require('./rooms')
