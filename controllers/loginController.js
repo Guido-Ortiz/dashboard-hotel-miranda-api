@@ -6,9 +6,6 @@ exports.login_post = async (req, res, next) => {
     passport.authenticate('login', async (err, user, info) => {
         try {
             if (err || !user) {
-                // const error = new Error('An error occurred.');
-
-                // return next(error);
                 return res.json('Wrong credentials')
             }
 
@@ -19,7 +16,6 @@ exports.login_post = async (req, res, next) => {
                 const token = jwt.sign({ user: body }, process.env.SECRET_KEY);
 
                 return res.json({ token, user });
-
             }
             );
         } catch (e) {

@@ -28,13 +28,6 @@ passport.use(
         } else {
           return done(null, false, { message: 'Wrong credentials' });
         }
-
-        //   const validate = await user.isValidPassword(password);
-
-        // if (!validate) {
-        //     return done(null, false, { message: 'Wrong Password' });
-        // }
-
       } catch (e) {
         return done(e);
       }
