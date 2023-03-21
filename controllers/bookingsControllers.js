@@ -1,8 +1,14 @@
 const bookingsMockData = require('../public/bookingsMockData.json')
+const connection = require('../database')
 
 exports.bookings_list = async (req, res, next) => {
     try {
-        res.json({ succes: true, bookings: bookingsMockData })
+        // res.json({ succes: true, bookings: bookingsMockData })
+        connection.query('SELECT * FROM bookings', function (error, results, fields) {
+            if (error) throw error;
+            // console.log('The solution is: ', results)
+            res.json({ succes: true, bookings: results })
+          })
     } catch (e) {
         console.log(e)
     }
