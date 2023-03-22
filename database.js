@@ -15,7 +15,10 @@ const connection = mysql.createConnection({
     }
   })
 
-  module.exports = connection
+  // connection.end() 
+
+module.exports = connection
+
   
 //   connection.query('SELECT 1 + 1 AS solution', (err, rows, fields) => {
 //     if (err) throw err
