@@ -14,8 +14,9 @@ exports.room_detail = async (req, res) => {
     const { id } = req.params
     try {
         const room = await dbQuery('SELECT r.id_rooms, r.number, r.photos, r.price, r.offer, t.type, s.status FROM miranda.rooms AS r INNER JOIN room_type AS t ON r.idType=t.id INNER JOIN room_status AS s ON r.id_status=s.id_room_status WHERE r.id_rooms=?;', id)
-        
-        res.json(room);
+        const amenities = await dbQuery('SELECT a.idamenities, a.amenity FROM miranda.rooms_amenities AS ra INNER JOIN rooms AS r ON r.id_rooms=ra.id_room INNER JOIN amenities AS a ON a.idamenities=ra.id_amenity WHERE r.id_rooms=?;', id)
+
+        res.json({ room, amenities });
     } catch (e) {
         console.log(e)
         next(e)
