@@ -6,7 +6,7 @@ async function run() {
     await connection.connect()
 
     // await insertCustomers(10)
-    // await insertUsers(20)
+    // await insertUsers(10)
     // await insertReviews(20)
     // await insertRooms(100)
     // await insertBookings(10)
@@ -68,7 +68,7 @@ const randomUser = () => {
     ]
     const descriptions = ['Receptionist', 'Tourist Information', 'Kitchen', 'Cleaning', 'Security']
     return {
-        id_user: faker.datatype.number({ min: 1, max: 10000 }),
+        // id_user: faker.datatype.number({ min: 1, max: 10000 }),
         name: faker.name.fullName(),
         photo: faker.helpers.arrayElement(users),
         email: faker.internet.email(),
