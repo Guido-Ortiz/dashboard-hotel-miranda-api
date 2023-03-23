@@ -8,13 +8,35 @@ async function run() {
     // await insertCustomers(10)
     // await insertUsers(10)
     // await insertReviews(20)
-    // await insertRooms(100)
+    // await insertRooms(10)
     // await insertBookings(10)
+    // await insertAmenities(3)
 
     await connection.end()
 }
 
 run()
+
+//amenities
+const randomAmenities = async() => {
+    const idRooms = await dbQuery('SELECT id_rooms FROM miranda.rooms', null)
+    const ids = idRooms.map(e => e.id_rooms)
+    const idAm = await dbQuery('SELECT idamenities FROM miranda.amenities', null)
+    const ida = idAm.map(e => e.idamenities)
+    return {
+        id_room: faker.helpers.arrayElement(ids),
+        id_amenity: faker.helpers.arrayElement(ida)
+    }
+}
+
+const insertAmenities = async (a) => {
+    // const amenities = []
+    for(let i = 0; i < a; i++){
+        const amenity = await randomAmenities()
+        // amenities.push(amenity)
+        await dbQuery('INSERT INTO miranda.rooms_amenities SET ?', amenity)
+    }
+}
 
 // bookings
 const randomBooking = async () => {

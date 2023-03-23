@@ -11,3 +11,6 @@ INNER JOIN amenities AS a ON ra.id_amenity=a.idAmenities
 INNER JOIN rooms AS r ON ra.id_room=r.id_rooms
 INNER JOIN room_type AS rt ON r.idType=rt.id
 INNER JOIN room_status AS rs ON r.id_status=rs.id_room_status;
+
+SELECT * FROM miranda.rooms AS r
+INNER JOIN rooms_amenities AS ra ON r.id_rooms=ra.id_room;
