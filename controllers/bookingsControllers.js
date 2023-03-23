@@ -1,16 +1,5 @@
-// const bookingsMockData = require('../public/bookingsMockData.json');
 const connection = require('../database');
 const dbQuery = require('../helpers/dbQuery');
-
-// function dbQuery(query, params) {
-//     return new Promise((resolve, reject) => {
-//         connection.query(query, params, (error, results) => {
-//             if (error)
-//                 reject(error);
-//             resolve(results);
-//         });
-//     });
-// }
 
 exports.bookings_list = async (req, res, next) => {
     try {
@@ -45,11 +34,21 @@ exports.booking_delete = async (req, res, next) => {
         console.log(e)
         next(e)
     }
-    // res.json(`Booking ${req.params.id} deleted succesfully`)
 }
 
-exports.booking_post = (req, res, next) => {
-    res.json('Booking added succesfully!')
+exports.booking_post = async (req, res, next) => {
+    const { id_customer, order, checkin, checkout, request, id_room_type, number, photo, id_status } = req.body
+    const newBooking = {
+        id_customer, order, checkin, checkout, request, id_room_type, number, photo, id_status
+    }
+
+    try {
+        await dbQuery('INSERT INTO bookings SET ?', newBooking)
+        res.json({ success: true, booking_added: newBooking })
+    } catch(e) {
+        console.log(e)
+        next(e)
+    }
 }
 
 exports.booking_edit = (req, res, next) => {
