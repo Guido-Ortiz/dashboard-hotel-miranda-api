@@ -51,7 +51,27 @@ exports.booking_post = async (req, res, next) => {
     }
 }
 
-exports.booking_edit = (req, res, next) => {
-    const edit = bookingsMockData.filter(e => e.id == req.params.id)
-    res.json(edit)
+exports.booking_edit = async (req, res, next) => {
+    const { id } = req.params
+    const { id_customer, order, checkin, checkout, request, id_room_type, number, photo, id_status } = req.body
+    const editBooking = {
+        id_customer,
+        order, 
+        checkin, 
+        checkout, 
+        request, 
+        id_room_type, 
+        number, 
+        photo, 
+        id_status
+    }
+
+    try {
+        await dbQuery('UPDATE bookings AS b SET ? WHERE b.booking_id=?', [ editBooking, id ])
+        res.json({ success: true, edit: editBooking })
+    } catch(e) {
+        console.log(e)
+        next(e)
+    }
+
 }

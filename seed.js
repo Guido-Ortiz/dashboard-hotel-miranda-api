@@ -9,11 +9,36 @@ async function run() {
     // await insertUsers(20)
     // await insertReviews(20)
     // await insertRooms(100)
+    // await insertBookings(10)
 
     await connection.end()
 }
 
 run()
+
+// bookings
+const randomBooking = async () => {
+    const idCustomers = await dbQuery('SELECT id_customer FROM miranda.customers;', null)
+    const ids = idCustomers.map(e => e.id_customer);
+    return {
+        id_customer: faker.helpers.arrayElement(ids),
+        order: faker.date.between("2022-01-01", "2022-12-12"),
+        checkin: faker.date.between("2022-12-12", "2023-12-12"),
+        checkout: faker.date.between("2022-12-12", "2023-12-12"),
+        request: faker.helpers.arrayElement(['Late Checkout', 'Early Checkin', 'None']),
+        id_room_type: faker.helpers.arrayElement(['1', '2', '3', '4']),
+        number: faker.datatype.number({ min: 1, max: 2000 }),
+        photo: faker.helpers.arrayElement(['https://travl.dexignlab.com/xhtml/images/room/room1.jpg', 'https://travl.dexignlab.com/xhtml/images/room/room6.jpg']),
+        id_status: faker.helpers.arrayElement(['1', '2', '3'])
+    }
+}
+
+const insertBookings = async (bookings) => {
+    for(let i = 0; i < bookings; i++){
+        const booking = await randomBooking()
+        await dbQuery('INSERT INTO miranda.bookings SET ?', booking)
+    }
+}
 
 // customers - clients
 const randomCustomer = () => {
