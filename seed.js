@@ -1,6 +1,7 @@
 const { faker } = require('@faker-js/faker');
 const connection = require('./database');
 const dbQuery = require('./helpers/dbQuery');
+const hashPassword = require('./helpers/hashPassword');
 
 async function run() {
     await connection.connect()
@@ -89,6 +90,9 @@ const randomUser = () => {
         "https://images.unsplash.com/photo-1552374196-c4e7ffc6e126?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8cG9ydHJhaXR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
     ]
     const descriptions = ['Receptionist', 'Tourist Information', 'Kitchen', 'Cleaning', 'Security']
+
+    const password = faker.internet.password()
+
     return {
         // id_user: faker.datatype.number({ min: 1, max: 10000 }),
         name: faker.name.fullName(),
@@ -97,7 +101,8 @@ const randomUser = () => {
         start: faker.date.between("2022-01-01", "2022-12-12"),
         description: faker.helpers.arrayElement(descriptions),
         contact: faker.phone.number("+## ## ### ## ##"),
-        idStatus: faker.helpers.arrayElement(['1', '2']) // 1--ACTIVE 2--INACTIVE
+        idStatus: faker.helpers.arrayElement(['1', '2']), // 1--ACTIVE 2--INACTIVE
+        password: hashPassword(password)
     }
 }
 
