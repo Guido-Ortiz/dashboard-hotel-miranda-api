@@ -2,7 +2,7 @@ const dbQuery = require('../helpers/dbQuery');
 
 exports.rooms_list = async (req, res, next) => {
     try {
-        const rooms = await dbQuery('SELECT r.id_rooms, r.number, r.photos, r.price, r.offer, t.type, s.status FROM miranda.rooms AS r INNER JOIN room_type AS t ON r.idType=t.id INNER JOIN room_status AS s ON r.id_status=s.id_room_status;', null)
+        const rooms = await dbQuery('SELECT r.id_rooms, r.number, r.photos, r.price, r.offer, t.type, s.status FROM miranda.rooms AS r INNER JOIN room_type AS t ON r.idType=t.id INNER JOIN room_status AS s ON r.id_status=s.id_room_status ORDER BY id_rooms;', null)
         res.json(rooms)
     } catch (e) {
         console.log(e)
@@ -35,6 +35,43 @@ exports.room_delete = async (req, res, next) => {
     }
 }
 
-exports.room_post = (req, res, next) => {
-    res.json('Room added succesfully!')
+exports.room_post = async (req, res, next) => {
+    const { id_rooms, number, photos, price, offer, idType, id_status } = req.body
+    const newRoom = {
+        id_rooms,
+        number,
+        photos, 
+        price, 
+        offer, 
+        idType, 
+        id_status
+    }
+    try {
+        await dbQuery('INSERT INTO rooms SET ?', newRoom)
+        res.json({ success: true, room_added: newRoom })
+    } catch(e) {
+        console.log(e)
+        next(e)
+    }
+}
+
+exports.room_edit = async (req, res, next) => {
+    const { id } = req.params
+    const { id_rooms, number, photos, price, offer, idType, id_status } = req.body
+    const editRoom = {
+        id_rooms,
+        number,
+        photos, 
+        price, 
+        offer, 
+        idType, 
+        id_status
+    }
+    try {
+        await dbQuery('UPDATE rooms AS r SET ? WHERE r.id_rooms=?', [ editRoom, id ])
+        res.json({ success: true, edit: editRoom })
+    } catch(e) {
+        console.log(e)
+        next(e)
+    }
 }
