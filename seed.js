@@ -82,7 +82,7 @@ const insertCustomers = async (customers) => {
 
 
 // users
-const randomUser = () => {
+const randomUser = async () => {
     const users = [
         "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ydHJhaXR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
         "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8cG9ydHJhaXR8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60",
@@ -102,7 +102,7 @@ const randomUser = () => {
         description: faker.helpers.arrayElement(descriptions),
         contact: faker.phone.number("+## ## ### ## ##"),
         idStatus: faker.helpers.arrayElement(['1', '2']), // 1--ACTIVE 2--INACTIVE
-        password: hashPassword(password)
+        password: await hashPassword(password)
     }
 }
 

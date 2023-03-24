@@ -1,4 +1,3 @@
-const connection = require('../database');
 const dbQuery = require('../helpers/dbQuery');
 
 exports.bookings_list = async (req, res, next) => {

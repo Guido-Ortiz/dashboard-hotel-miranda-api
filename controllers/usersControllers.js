@@ -1,5 +1,4 @@
 const dbQuery = require('../helpers/dbQuery');
-const usersMockData = require('../public/usersMockData.json');
 
 exports.users_list = async (req, res, next) => {
     try {
