@@ -12,20 +12,71 @@ exports.users_list = async (req, res, next) => {
     await disconnect()
 }
 
-exports.user_detail = (req, res) => {
+exports.user_detail = async (req, res) => {
+    await connect()
     const { id } = req.params
     try {
-        let detail = usersMockData.filter(e => e.id == id)
-        res.json(detail);
+        let user = await User.findById(id).exec()
+        res.json({ user: user })
     } catch (e) {
         console.log(e)
     }
+    await disconnect()
 };
 
-exports.user_post = (req, res, next) => {
-    res.json('User added succesfully!')
+exports.user_post = async (req, res, next) => {
+    await connect()
+    const { username, photo, email, start, description, phone, userstatus, password } = req.body
+    const newUser = {
+        username,
+        photo,
+        email,
+        start,
+        description,
+        phone,
+        password,
+        userstatus
+    }
+    try {
+        await User.create(newUser)
+        res.json({ success: true, newUser: newUser })
+    } catch(e) {
+        console.log(e)
+    }
+    await disconnect()
 }
 
-exports.user_delete = (req, res, next) => {
-    res.json(`User ${req.params.id} deleted succesfully`)
+exports.user_delete = async (req, res, next) => {
+    await connect()
+    const { id } = req.params
+    try {
+        let user = await User.findByIdAndDelete({ _id: id })
+        res.json({ success: true, deleted: user })
+    } catch (e) {
+        console.log(e)
+    }
+    await disconnect()
+}
+
+exports.user_edit = async (req, res, next) => {
+    await connect()
+    const { id } = req.params
+    const { username, photo, email, start, description, phone, userstatus, password } = req.body
+    const editUser = {
+        username,
+        photo,
+        email,
+        start,
+        description,
+        phone,
+        password,
+        userstatus
+    }
+    try {
+        await User.findByIdAndUpdate(id, editUser)
+        res.json({ success: true, editUser: editUser })
+    } catch(e) {
+        console.log(e)
+    }
+    await disconnect()
 }

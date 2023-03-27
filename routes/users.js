@@ -7,5 +7,6 @@ router.get('/', users_controller.users_list)
 router.get("/:id", users_controller.user_detail)
 router.post('/', users_controller.user_post)
 router.delete('/:id', users_controller.user_delete)
+router.put('/:id', users_controller.user_edit)
 
 module.exports = router;
