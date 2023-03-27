@@ -1,4 +1,4 @@
-const { connect, disconnect } = require('../db/connection')
+const { connect, disconnect } = require('../db/connection');
 const User = require("../schemas/user");
 
 exports.users_list = async (req, res, next) => {
