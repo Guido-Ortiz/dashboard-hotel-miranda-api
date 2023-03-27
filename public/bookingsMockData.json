@@ -46,5 +46,101 @@
     "number": 101,
     "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
     "status": "Check-In"
+  },
+  {
+    "id": 5,
+    "client": "Lebron James",
+    "order": "15/01/2022",
+    "checkin": "20/02/2022",
+    "checkout": "29/02/2022",
+    "request": "None",
+    "type": "Double Superior",
+    "number": 101,
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "status": "In-Progress"
+  },
+  {
+    "id": 6,
+    "client": "Rory Mclroy",
+    "order": "10/01/2022",
+    "checkin": "15/02/2022",
+    "checkout": "29/02/2022",
+    "request": "None",
+    "type": "Single Bed",
+    "number": 108,
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "status": "Check-Out"
+  },
+  {
+    "id": 7,
+    "client": "Steph Curry",
+    "order": "10/01/2022",
+    "checkin": "15/02/2022",
+    "checkout": "29/02/2022",
+    "request": "None",
+    "type": "Suite",
+    "number": 103,
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "status": "Check-Out"
+  },
+  {
+    "id": 8,
+    "client": "Max Homa",
+    "order": "01/02/2022",
+    "checkin": "25/02/2022",
+    "checkout": "29/02/2022",
+    "request": "None",
+    "type": "Double Bed",
+    "number": 101,
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "status": "Check-In"
+  },
+  {
+    "id": 9,
+    "client": "Lebron James",
+    "order": "15/01/2022",
+    "checkin": "20/02/2022",
+    "checkout": "29/02/2022",
+    "request": "None",
+    "type": "Double Superior",
+    "number": 101,
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "status": "In-Progress"
+  },
+  {
+    "id": 10,
+    "client": "Rory Mclroy",
+    "order": "10/01/2022",
+    "checkin": "15/02/2022",
+    "checkout": "29/02/2022",
+    "request": "None",
+    "type": "Single Bed",
+    "number": 108,
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "status": "Check-Out"
+  },
+  {
+    "id": 11,
+    "client": "Steph Curry",
+    "order": "10/01/2022",
+    "checkin": "15/02/2022",
+    "checkout": "29/02/2022",
+    "request": "None",
+    "type": "Suite",
+    "number": 103,
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "status": "Check-Out"
+  },
+  {
+    "id": 12,
+    "client": "Max Homa",
+    "order": "01/02/2022",
+    "checkin": "25/02/2022",
+    "checkout": "29/02/2022",
+    "request": "None",
+    "type": "Double Bed",
+    "number": 101,
+    "photo": "https://travl.dexignlab.com/xhtml/images/room/room1.jpg",
+    "status": "Check-In"
   }
 ]

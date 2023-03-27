@@ -1,11 +1,15 @@
-const usersMockData = require('../public/usersMockData.json');
+const { connect, disconnect } = require('../db/connection')
+const User = require("../schemas/user");
 
 exports.users_list = async (req, res, next) => {
+    await connect()
+    const users = await User.find().exec()
     try {
-        res.json({ succes: true, users: usersMockData })
+        res.json({ users: users })
     } catch (e) {
         console.log(e)
     }
+    await disconnect()
 }
 
 exports.user_detail = (req, res) => {

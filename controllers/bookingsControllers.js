@@ -1,6 +1,8 @@
 const bookingsMockData = require('../public/bookingsMockData.json')
+const User = require('../schemas/user')
 
 exports.bookings_list = async (req, res, next) => {
+    // const users = await User.find()
     try {
         res.json({ succes: true, bookings: bookingsMockData })
     } catch (e) {
