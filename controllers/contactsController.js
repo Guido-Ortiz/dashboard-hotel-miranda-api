@@ -25,8 +25,16 @@ exports.contact_detail = async (req, res) => {
     await disconnect()
 };
 
-exports.contact_post = (req, res, next) => {
-    res.json('Contact added succesfully!')
+exports.contact_post = async (req, res, next) => {
+    await connect()
+    const { name, email, phone, date, comment, archived } = req.body
+    const newReview = { name, email, phone, date, comment, archived }
+    try {
+        await Review.create(newReview)
+        res.json({ success: true, newReview: newReview })
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 exports.contact_delete = async (req, res, next) => {
@@ -42,5 +50,15 @@ exports.contact_delete = async (req, res, next) => {
 }
 
 exports.contact_edit = async (req, res, next) => {
-    res.json({ success: true })
+    await connect()
+    const { id } = req.params
+    const { name, email, phone, date, comment, archived } = req.body
+    const editReview = { name, email, phone, date, comment, archived }
+    try {
+        await Review.findByIdAndUpdate(id, editReview)
+        res.json({ success: true, editReview: editReview })
+    } catch (e) {
+        console.log(e)
+    }
+    await disconnect()
 }
