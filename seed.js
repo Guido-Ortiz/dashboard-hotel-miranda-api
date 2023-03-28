@@ -1,6 +1,7 @@
 const { faker } = require('@faker-js/faker');
 const { connect, disconnect } = require('./db/connection');
 const hashPassword = require('./helpers/hashPassword');
+const Booking = require('./schemas/booking');
 const Review = require('./schemas/review');
 const Room = require('./schemas/room');
 const User = require('./schemas/user');
@@ -86,9 +87,9 @@ const randomRoom = async () => {
     ]
     const photosArray = []
     // const ph = ['a', 'b','c', 'd', 'e', 'f', 'g', 'h']
-    for(let i = 0; i < 4; i++){
+    for (let i = 0; i < 4; i++) {
         const ph = faker.helpers.arrayElement(photos)
-        if(!photosArray.includes(ph)){
+        if (!photosArray.includes(ph)) {
             photosArray.push(ph)
         }
     }
@@ -107,5 +108,29 @@ const insertRooms = async (rooms) => {
     for (let i = 0; i < rooms; i++) {
         const room = await randomRoom()
         await Room.create(room)
+    }
+}
+
+// BOOKINGS
+const randomBooking = async () => {
+    return await new Booking({
+        order: faker.date.between("2022-01-01", "2022-12-12"),
+        checkin: faker.date.between("2022-12-12", "2023-12-12"),
+        checkout: faker.date.between("2022-12-12", "2023-12-12"),
+        request: faker.helpers.arrayElement(['Late Checkout', 'Early Checkin', 'None']),
+        room_type: faker.helpers.arrayElement(['Single Bed', 'Double Bed', 'Double Bed Superior', 'Suite']),
+        number: faker.datatype.number({ min: 1, max: 2000 }),
+        photo: faker.helpers.arrayElement(['https://travl.dexignlab.com/xhtml/images/room/room1.jpg', 'https://travl.dexignlab.com/xhtml/images/room/room6.jpg']),
+        status: faker.helpers.arrayElement(['In Progress', 'Checking-In', 'Checking Out']),
+        customer_name: faker.name.fullName(),
+        customer_email: faker.internet.email(),
+        customer_phone: faker.phone.number("+## ## ### ## ##")
+    })
+}
+
+const insertBookings = async (bookings) => {
+    for (let i = 0; i < bookings; i++) {
+        const booking = await randomBooking()
+        await await Booking.create(booking)
     }
 }

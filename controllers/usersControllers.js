@@ -22,7 +22,7 @@ exports.user_detail = async (req, res) => {
         console.log(e)
     }
     await disconnect()
-};
+}
 
 exports.user_post = async (req, res, next) => {
     await connect()
