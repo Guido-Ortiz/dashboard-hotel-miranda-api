@@ -93,11 +93,14 @@ const randomRoom = async () => {
             photosArray.push(ph)
         }
     }
+    const offer = faker.helpers.arrayElement(['Yes', 'No'])
+
     return await new Room({
         number: faker.datatype.number({ min: 100, max: 500 }),
         photos: photosArray,
         price: faker.datatype.number({ min: 100, max: 400 }),
-        offer: faker.helpers.arrayElement([0, 10, 20]),
+        offer: offer,
+        discount: offer === 'No' ? 0 : faker.helpers.arrayElement([5, 10, 20]),
         type: faker.helpers.arrayElement(['Single Bed', 'Double Bed', 'Double Bed Superior', 'Suite']),
         status: faker.helpers.arrayElement(['Booked', 'Available']),
         amenities
