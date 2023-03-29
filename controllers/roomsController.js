@@ -26,8 +26,8 @@ exports.room_detail = async (req, res) => {
 
 exports.room_post = async (req, res, next) => {
     await connect()
-    const { number, photos, price, offer, type, status, amenities } = req.body
-    const newRoom = { number, photos, price, offer, type, status, amenities }
+    const { number, photos, price, offer, discount, type, status, amenities, cancelation_policy } = req.body
+    const newRoom = { number, photos, price, offer, discount, type, status, amenities, cancelation_policy }
     try {
         await Room.create(newRoom)
         res.json({ success: true, data: newRoom })
@@ -51,8 +51,8 @@ exports.room_delete = async (req, res, next) => {
 exports.room_edit = async (req, res, next) => {
     await connect()
     const { id } = req.params
-    const { number, photos, price, offer, type, status, amenities } = req.body
-    const editRoom = { number, photos, price, offer, type, status, amenities }
+    const { number, photos, price, offer, discount, type, status, amenities, cancelation_policy } = req.body
+    const editRoom = { number, photos, price, offer, discount, type, status, amenities, cancelation_policy }
     try {
         await Room.findByIdAndUpdate(id, editRoom)
         res.json({ success: true, data: editRoom })

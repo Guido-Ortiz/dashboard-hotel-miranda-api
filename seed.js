@@ -11,6 +11,7 @@ async function run() {
 
     // await insertCustomers(10)
     // await insertUsers(10)
+    // await Review.deleteMany()
     // await insertReviews(10)
     // await insertRooms(10)
     // await Room.deleteMany()
@@ -50,14 +51,14 @@ const insertUsers = async (users) => {
 
 // reviews
 const randomReview = async () => {
-    // const idCustomers = await dbQuery('SELECT id_customer FROM miranda.customers;', null)
-    // const ids = idCustomers.map(e => e.id_customer);
     return await new Review({
         name: faker.name.fullName(),
         email: faker.internet.email(),
         phone: faker.phone.number("+## ## ### ## ##"),
         date: faker.date.between("2022-01-01", "2022-12-12"),
+        issue: faker.random.word(),
         comment: faker.lorem.paragraphs(),
+        stars: faker.datatype.number({ min: 3, max: 5, precision: 0.1 }),
         archived: faker.helpers.arrayElement(['0', '1']),
     })
 }
