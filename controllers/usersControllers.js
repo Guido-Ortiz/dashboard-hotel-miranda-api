@@ -5,7 +5,7 @@ exports.users_list = async (req, res, next) => {
     await connect()
     const users = await User.find().exec()
     try {
-        res.json({ users: users })
+        res.json({ data: users })
     } catch (e) {
         console.log(e)
     }
@@ -17,7 +17,7 @@ exports.user_detail = async (req, res) => {
     const { id } = req.params
     try {
         let user = await User.findById(id).exec()
-        res.json({ user: user })
+        res.json({ data: user })
     } catch (e) {
         console.log(e)
     }
@@ -39,7 +39,7 @@ exports.user_post = async (req, res, next) => {
     }
     try {
         await User.create(newUser)
-        res.json({ success: true, newUser: newUser })
+        res.json({ success: true, data: newUser })
     } catch(e) {
         console.log(e)
     }
@@ -51,7 +51,7 @@ exports.user_delete = async (req, res, next) => {
     const { id } = req.params
     try {
         let user = await User.findByIdAndDelete({ _id: id })
-        res.json({ success: true, deleted: user })
+        res.json({ success: true, data: user })
     } catch (e) {
         console.log(e)
     }
@@ -74,7 +74,7 @@ exports.user_edit = async (req, res, next) => {
     }
     try {
         await User.findByIdAndUpdate(id, editUser)
-        res.json({ success: true, editUser: editUser })
+        res.json({ success: true, data: editUser })
     } catch(e) {
         console.log(e)
     }

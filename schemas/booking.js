@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 const booking = new mongoose.Schema({
     order: { type: String },

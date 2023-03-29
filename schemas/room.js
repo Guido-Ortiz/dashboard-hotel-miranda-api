@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 
 const room = new mongoose.Schema({
     number: { type: String, required: true },

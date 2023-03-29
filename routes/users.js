@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 const users_controller = require('../controllers/usersControllers')
 
 // USERS ROUTES
@@ -9,4 +9,4 @@ router.post('/', users_controller.user_post)
 router.delete('/:id', users_controller.user_delete)
 router.put('/:id', users_controller.user_edit)
 
-module.exports = router;
+module.exports = router

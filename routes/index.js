@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-const passport = require('passport');
+var express = require('express')
+var router = express.Router()
+const passport = require('passport')
 const sessionPassport = passport.authenticate('jwt', { session: false })
 
 // IMPORTO LOS ROUTERS
@@ -20,4 +20,4 @@ router.use('/users', sessionPassport , users)
 router.use('/contacts', sessionPassport , contacts)
 
 
-module.exports = router;
+module.exports = router

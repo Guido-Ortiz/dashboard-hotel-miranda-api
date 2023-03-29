@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 const room_controller = require('../controllers/roomsController')
 
 // ROOMS ROUTES
@@ -9,4 +9,4 @@ router.post('/', room_controller.room_post)
 router.delete('/:id', room_controller.room_delete)
 router.put('/:id', room_controller.room_edit)
 
-module.exports = router;
+module.exports = router

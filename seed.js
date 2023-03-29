@@ -4,7 +4,7 @@ const hashPassword = require('./helpers/hashPassword');
 const Booking = require('./schemas/booking');
 const Review = require('./schemas/review');
 const Room = require('./schemas/room');
-const User = require('./schemas/user');
+const User = require('./schemas/user')
 
 async function run() {
     await connect()
