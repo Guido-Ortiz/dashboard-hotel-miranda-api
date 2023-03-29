@@ -8,7 +8,8 @@ const room = new mongoose.Schema({
     discount: { type: Number },
     type: { type: String },
     status: { type: String },
-    amenities: { type: Array }
+    amenities: { type: Array }, 
+    cancelation_policy: { type: String }
 })
 
 const Room = mongoose.model('room', room)

@@ -1,11 +1,11 @@
-const { connect, disconnect } = require('../db/connection');
-const Room = require('../schemas/room');
+const { connect, disconnect } = require('../db/connection')
+const Room = require('../schemas/room')
 
 exports.rooms_list = async (req, res, next) => {
     await connect()
     const rooms = await Room.find().exec()
     try {
-        res.json({ rooms: rooms })
+        res.json({ data: rooms })
     } catch (e) {
         console.log(e)
     }
@@ -17,7 +17,7 @@ exports.room_detail = async (req, res) => {
     const { id } = req.params
     try {
         let room = await Room.findById(id).exec()
-        res.json({ room: room });
+        res.json({ data: room })
     } catch (e) {
         console.log(e)
     }
@@ -30,7 +30,7 @@ exports.room_post = async (req, res, next) => {
     const newRoom = { number, photos, price, offer, type, status, amenities }
     try {
         await Room.create(newRoom)
-        res.json({ success: true, newRoom: newRoom })
+        res.json({ success: true, data: newRoom })
     } catch (e) {
         console.log(e)
     }
@@ -41,7 +41,7 @@ exports.room_delete = async (req, res, next) => {
     const { id } = req.params
     try {
         let room = await Room.findByIdAndDelete(id)
-        res.json({ success: true, deleted: room })
+        res.json({ success: true, data: room })
     } catch (e) {
         console.log(e)
     }
@@ -55,8 +55,9 @@ exports.room_edit = async (req, res, next) => {
     const editRoom = { number, photos, price, offer, type, status, amenities }
     try {
         await Room.findByIdAndUpdate(id, editRoom)
-        res.json({ success: true, editRoom: editRoom })
+        res.json({ success: true, data: editRoom })
     } catch (e) {
         console.log(e)
     }
+    await disconnect()
 }

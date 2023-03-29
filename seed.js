@@ -94,6 +94,7 @@ const randomRoom = async () => {
         }
     }
     const offer = faker.helpers.arrayElement(['Yes', 'No'])
+    const cancelation = ['If cancelled up to 48 hours before arrival no fee will be charged', 'If cancelled less than 48 hours before arrival 100% of the first night will be charged', 'If you are a no-show, 100% of the first night will be charged']
 
     return await new Room({
         number: faker.datatype.number({ min: 100, max: 500 }),
@@ -103,7 +104,8 @@ const randomRoom = async () => {
         discount: offer === 'No' ? 0 : faker.helpers.arrayElement([5, 10, 20]),
         type: faker.helpers.arrayElement(['Single Bed', 'Double Bed', 'Double Bed Superior', 'Suite']),
         status: faker.helpers.arrayElement(['Booked', 'Available']),
-        amenities
+        amenities,
+        cancelation_policy: faker.helpers.arrayElement(cancelation)
     })
 }
 
