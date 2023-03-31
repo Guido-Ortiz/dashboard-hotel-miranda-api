@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 const booking_controller = require('../controllers/bookingsControllers')
 
 // BOOKING ROUTES
@@ -9,4 +9,4 @@ router.post('/', booking_controller.booking_post)
 router.delete('/:id', booking_controller.booking_delete)
 router.put('/:id', booking_controller.booking_edit)
 
-module.exports = router;
+module.exports = router

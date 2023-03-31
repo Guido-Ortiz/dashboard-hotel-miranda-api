@@ -1,11 +1,11 @@
-const passport = require('passport');
-const passportLocal = require('passport-local');
-const passportJwt = require('passport-jwt');
+const passport = require('passport')
+const passportLocal = require('passport-local')
+const passportJwt = require('passport-jwt')
 require('dotenv').config()
 
-const localStrategy = passportLocal.Strategy;
-const JWTStrategy = passportJwt.Strategy;
-const ExtractJwt = passportJwt.ExtractJwt;
+const localStrategy = passportLocal.Strategy
+const JWTStrategy = passportJwt.Strategy
+const ExtractJwt = passportJwt.ExtractJwt
 
 const admin = {
   id: 1,
@@ -33,7 +33,7 @@ passport.use(
       }
     }
   )
-);
+)
 
 
 passport.use(
@@ -50,4 +50,4 @@ passport.use(
       }
     }
   )
-);
+)
