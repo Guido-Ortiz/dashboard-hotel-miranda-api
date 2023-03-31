@@ -4,22 +4,19 @@ const Booking = require('../schemas/booking')
 exports.bookings_list = async (req, res, next) => {
     const { name } = req.query
     await connect()
-    if(!name) {
-        try {
+
+    try {
+        if (!name) {
             const bookings = await Booking.find().exec()
             res.json({ data: bookings })
-        } catch (e) {
-            console.log(e)
-        }
-    } else {
-        try {
+        } else {
             const bookings = await Booking.find({ customer_name: name }).exec()
             res.json({ data: bookings })
-        } catch(e) {
-            console.log(e)
         }
+    } catch (e) {
+        console.log(e)
     }
-    
+
     await disconnect()
 }
 
@@ -42,7 +39,7 @@ exports.booking_post = async (req, res, next) => {
     try {
         await Booking.create(newBooking)
         res.json({ success: true, data: newBooking })
-    } catch(e) {
+    } catch (e) {
         console.log(e)
     }
     await disconnect()
@@ -54,7 +51,7 @@ exports.booking_delete = async (req, res, next) => {
     try {
         let booking = await Booking.findByIdAndDelete(id)
         res.json({ success: true, data: booking })
-    } catch(e) {
+    } catch (e) {
         console.log(e)
     }
     await disconnect()
@@ -68,7 +65,7 @@ exports.booking_edit = async (req, res, next) => {
     try {
         await Booking.findByIdAndUpdate(id, editBooking)
         res.json({ success: true, data: editBooking })
-    } catch(e) {
+    } catch (e) {
         console.log(e)
     }
     await disconnect()
