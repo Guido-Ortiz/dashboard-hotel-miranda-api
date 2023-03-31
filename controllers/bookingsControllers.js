@@ -2,13 +2,24 @@ const { connect, disconnect } = require('../db/connection')
 const Booking = require('../schemas/booking')
 
 exports.bookings_list = async (req, res, next) => {
+    const { name } = req.query
     await connect()
-    const bookings = await Booking.find().exec()
-    try {
-        res.json({ data: bookings })
-    } catch (e) {
-        console.log(e)
+    if(!name) {
+        try {
+            const bookings = await Booking.find().exec()
+            res.json({ data: bookings })
+        } catch (e) {
+            console.log(e)
+        }
+    } else {
+        try {
+            const bookings = await Booking.find({ customer_name: name }).exec()
+            res.json({ data: bookings })
+        } catch(e) {
+            console.log(e)
+        }
     }
+    
     await disconnect()
 }
 
