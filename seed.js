@@ -14,7 +14,7 @@ async function run() {
     // await Review.deleteMany()
     // await insertReviews(10)
     // await insertRooms(10)
-    // await Room.deleteMany()
+    // await User.deleteMany()
     // await insertBookings(10)
     // await insertAmenities(3)
 
