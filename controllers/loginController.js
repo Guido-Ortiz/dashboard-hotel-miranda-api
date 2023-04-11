@@ -1,8 +1,10 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const { connect, disconnect } = require('../db/connection');
 require('dotenv').config()
 
 exports.login_post = async (req, res, next) => {
+    
     passport.authenticate('login', async (err, admin, info) => {
         try {
             if (err || !admin) {
@@ -23,4 +25,5 @@ exports.login_post = async (req, res, next) => {
         }
     }
     )(req, res, next);
+    
 }
