@@ -6,8 +6,8 @@ exports.contacts_list = async (req, res, next) => {
     try {
         await connect()
         const review = await Review.find().exec()
-        await disconnect()
         res.json({ data: review })
+        await disconnect()
     } catch (e) {
         console.log(e)
     }
@@ -18,8 +18,8 @@ exports.contact_detail = async (req, res) => {
     try {
         await connect()
         let review = await Review.findById(id).exec()
-        await disconnect()
         res.json({ data: review });
+        await disconnect()
     } catch (e) {
         console.log(e)
     }
@@ -31,8 +31,8 @@ exports.contact_post = async (req, res, next) => {
     try {
         await connect()
         await Review.create(newReview)
-        await disconnect()
         res.json({ success: true, data: newReview })
+        await disconnect()
     } catch (e) {
         console.log(e)
     }
@@ -43,8 +43,8 @@ exports.contact_delete = async (req, res, next) => {
     try {
         await connect()
         let review = await Review.findByIdAndDelete(id)
-        await disconnect()
         res.json({ success: true, data: review })
+        await disconnect()
     } catch (e) {
         console.log(e)
     }
@@ -57,8 +57,8 @@ exports.contact_edit = async (req, res, next) => {
     try {
         await connect()
         await Review.findByIdAndUpdate(id, editReview)
-        await disconnect()
         res.json({ success: true, data: editReview })
+        await disconnect()
     } catch (e) {
         console.log(e)
     }

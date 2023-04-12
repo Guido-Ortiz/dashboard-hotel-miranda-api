@@ -5,8 +5,8 @@ exports.rooms_list = async (req, res, next) => {
     try {
         await connect()
         const rooms = await Room.find().exec()
-        await disconnect()
         res.json({ data: rooms })
+        await disconnect()
     } catch (e) {
         console.log(e)
     }
@@ -17,8 +17,8 @@ exports.room_detail = async (req, res) => {
     try {
         await connect()
         let room = await Room.findById(id).exec()
-        await disconnect()
         res.json({ data: room })
+        await disconnect()
     } catch (e) {
         console.log(e)
     }
@@ -30,8 +30,8 @@ exports.room_post = async (req, res, next) => {
     try {
         await connect()
         await Room.create(newRoom)
-        await disconnect()
         res.json({ success: true, data: newRoom })
+        await disconnect()
     } catch (e) {
         console.log(e)
     }
@@ -42,8 +42,8 @@ exports.room_delete = async (req, res, next) => {
     try {
         await connect()
         let room = await Room.findByIdAndDelete(id)
-        await disconnect()
         res.json({ success: true, data: room })
+        await disconnect()
     } catch (e) {
         console.log(e)
     }
@@ -56,8 +56,8 @@ exports.room_edit = async (req, res, next) => {
     try {
         await connect()
         await Room.findByIdAndUpdate(id, editRoom)
-        await disconnect()
         res.json({ success: true, data: editRoom })
+        await disconnect()
     } catch (e) {
         console.log(e)
     }

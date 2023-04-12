@@ -5,10 +5,10 @@ exports.users_list = async (req, res, next) => {
     try {
         await connect()
         const users = await User.find().exec()
+        res.status(200).json({ data: users })
         await disconnect()
-        res.json({ data: users })
     } catch (e) {
-        console.log(e)
+        next(e)
     }
 }
 
@@ -17,10 +17,10 @@ exports.user_detail = async (req, res) => {
     try {
         await connect()
         let user = await User.findById(id).exec()
-        await disconnect()
         res.json({ data: user })
+        await disconnect()
     } catch (e) {
-        console.log(e)
+        next(e)
     }
 }
 
@@ -39,10 +39,10 @@ exports.user_post = async (req, res, next) => {
     try {
         await connect()
         await User.create(newUser)
-        await disconnect()
         res.json({ success: true, data: newUser })
+        await disconnect()
     } catch(e) {
-        console.log(e)
+        next(e)
     }
 }
 
@@ -51,10 +51,10 @@ exports.user_delete = async (req, res, next) => {
     try {
         await connect()
         let user = await User.findByIdAndDelete({ _id: id })
-        await disconnect()
         res.json({ success: true, data: user })
+        await disconnect()
     } catch (e) {
-        console.log(e)
+        next(e)
     }
 }
 
@@ -74,9 +74,9 @@ exports.user_edit = async (req, res, next) => {
     try {
         await connect()
         await User.findByIdAndUpdate(id, editUser)
-        await disconnect()
         res.json({ success: true, data: editUser })
+        await disconnect()
     } catch(e) {
-        console.log(e)
+        next(e)
     }
 }
