@@ -6,7 +6,7 @@ const { MONGO } = process.env
 async function connect() {
     try {
         await mongoose.connect(MONGO)
-        console.log('Conected to DB')
+        console.log('Connected to DB')
     } catch (error) {
         throw new Error(error)
     }
@@ -14,6 +14,7 @@ async function connect() {
 
 async function disconnect() {
     await mongoose.disconnect()
+    console.log('Disconnected from DB')
 }
 
 module.exports = { connect, disconnect }
