@@ -1,0 +1,10 @@
+{
+  "lambda": {
+    "role": "dashboard-hotel-miranda-api-executor",
+    "name": "dashboard-hotel-miranda-api",
+    "region": "eu-west-3"
+  },
+  "api": {
+    "id": "l8yr9ybo68"
+  }
+}
