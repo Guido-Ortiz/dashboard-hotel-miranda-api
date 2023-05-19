@@ -33,7 +33,7 @@ app.use(session({
 app.use(passport.initialize())
 app.use(passport.session())
 
-// ENABLE ALL CORS REQUESTS
+// Enable CORS requests
 app.use(cors())
 
 app.use('/', indexRouter)
