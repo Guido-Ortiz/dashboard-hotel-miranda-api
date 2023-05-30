@@ -36,6 +36,7 @@ app.use(passport.session())
 // Enable CORS requests
 app.use(cors())
 
+// routes
 app.use('/', indexRouter)
 
 // catch 404 and forward to error handler
