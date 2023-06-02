@@ -72,7 +72,7 @@ const insertReviews = async (rev) => {
 
 // ROOM
 const randomRoom = async () => {
-    const amenities = ['WiFi', 'AC', 'Parking', 'TV', 'Fridge', 'Coffee Maker', 'Hair Dryer']
+    const amenities = ['WiFi', 'AC', 'Parking', 'TV', 'Fridge', 'Coffee Maker', 'Hair Dryer', 'Beach Towels']
     const photos = [
         "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
         "https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8MHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
@@ -87,7 +87,6 @@ const randomRoom = async () => {
         "https://images.unsplash.com/photo-1525905708812-b271b5e3b2f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NTJ8fGhvdGVsJTIwcm9vbXxlbnwwfDB8MHx8&auto=format&fit=crop&w=800&q=60",
     ]
     const photosArray = []
-    // const ph = ['a', 'b','c', 'd', 'e', 'f', 'g', 'h']
     for (let i = 0; i < 4; i++) {
         const ph = faker.helpers.arrayElement(photos)
         if (!photosArray.includes(ph)) {
