@@ -26,16 +26,7 @@ exports.user_detail = async (req, res) => {
 
 exports.user_post = async (req, res, next) => {
     const { username, photo, email, start, description, phone, userstatus, password } = req.body
-    const newUser = {
-        username,
-        photo,
-        email,
-        start,
-        description,
-        phone,
-        password,
-        userstatus
-    }
+    const newUser = { username, photo, email, start, description, phone, password, userstatus }
     try {
         await connect()
         await User.create(newUser)
