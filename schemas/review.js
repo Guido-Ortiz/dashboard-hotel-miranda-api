@@ -7,7 +7,7 @@ const review = new mongoose.Schema({
     date: { type: String },
     issue: { type: String },
     comment: { type: String, required: true },
-    stars: { type: Number },
+    stars: { type: Number, required: true },
     archived: { type: Boolean }
 })
 
