@@ -11,6 +11,8 @@ const PassportLocal = require('passport-local').Strategy
 
 require('./middleware/auth.js')
 
+// app.js --> server.js
+
 var indexRouter = require('./routes/index');
 
 var app = express();
